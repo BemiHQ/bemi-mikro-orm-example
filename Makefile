@@ -53,6 +53,9 @@ migrate:
 add-migration:
 	devbox run --env-file ./server/.env "cd server && bunx mikro-orm-esm migration:create --initial"
 
+rollback:
+	devbox run --env-file ./server/.env "cd server && bunx mikro-orm-esm migration:down"
+
 reset:
 	devbox run --env-file ./server/.env "dropdb -p 5434 bemi_dev_source && createdb -p 5434 bemi_dev_source" && \
 		make migrate

@@ -1,6 +1,8 @@
+import { setContext } from "@bemi-db/mikro-orm";
 import cors from "cors";
 import express from "express";
 import { MikroORM, RequestContext } from "@mikro-orm/postgresql";
+
 import { DI } from "./di";
 
 import { todosRouter } from "./todos.router";
@@ -15,6 +17,13 @@ const main = async (): Promise<void> => {
   app.use((_req, _res, next) => {
     RequestContext.create(DI.orm.em, next);
   });
+
+  app.use(
+    setContext((req: Request) => ({
+      apiEndpoint: req.url,
+      userId: 1,
+    }))
+  );
 
   app.use("/", todosRouter);
 
