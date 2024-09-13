@@ -16,9 +16,12 @@ delete:
 	devbox run "dropdb -p 5434 bemi_dev_source && dropuser -p 5434 postgres"
 
 install:
+	rm -rf ./server/node_modules/@bemi-db && \
 	devbox run --env-file ./server/.env "bun install && \
 		cd server && bun install && \
-		cd ../client && bun install"
+		cd ../client && bun install" && \
+	cd ../bemi-mikro-orm && pnpm install && pnpm build && cd - && \
+	cp -r ../bemi-mikro-orm/dist/* ./server/node_modules/@bemi-db/mikro-orm/dist && cp ../bemi-mikro-orm/package.json ./server/node_modules/@bemi-db/mikro-orm/package.json
 
 up: install
 	devbox run "bun run concurrently \"make up-server\" \"make up-client\""
