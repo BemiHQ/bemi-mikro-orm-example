@@ -29,6 +29,9 @@ up-server:
 up-client:
 	devbox run "cd client && PORT=4002 bun run react-scripts start"
 
+up-amplify:
+	cd amplify && pnpm run dev
+
 up-services:
 	devbox services start postgresql-source
 
