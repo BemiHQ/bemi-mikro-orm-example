@@ -40,6 +40,14 @@
           "resourceName": "echofunction"
         }
       ]
+    },
+    "AMPLIFY_function_echofunction_sourceDbUri": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "echofunction"
+        }
+      ]
     }
   }
 }
