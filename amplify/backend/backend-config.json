@@ -16,5 +16,30 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     }
+  },
+  "function": {
+    "echofunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_echofunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "echofunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_echofunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "echofunction"
+        }
+      ]
+    }
   }
 }
