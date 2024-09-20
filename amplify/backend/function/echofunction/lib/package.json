@@ -12,6 +12,7 @@
   "dependencies": {
     "@mikro-orm/core": "^6.3.10",
     "@mikro-orm/postgresql": "^6.3.10",
-    "@mikro-orm/reflection": "^6.3.10"
+    "@mikro-orm/reflection": "^6.3.10",
+    "reflect-metadata": "^0.2.2"
   }
 }

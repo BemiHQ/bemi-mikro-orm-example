@@ -17,6 +17,9 @@ importers:
       '@mikro-orm/reflection':
         specifier: ^6.3.10
         version: 6.3.10(@mikro-orm/core@6.3.10)
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
     devDependencies:
       '@types/aws-lambda':
         specifier: ^8.10.92

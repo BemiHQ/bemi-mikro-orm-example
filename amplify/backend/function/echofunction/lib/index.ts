@@ -1,5 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { MikroORM } from "@mikro-orm/postgresql";
+import 'reflect-metadata';
+
 import config from "./mikro-orm.config";
 import { Todo } from "./todo.entity";
 
@@ -11,7 +13,8 @@ export const handler = async (
     console.log(`CONTEXT: ${JSON.stringify(context)}`);
 
     const orm = await MikroORM.init(config);
-    const todos = await orm.em.find(Todo, {});
+    const em = orm.em.fork();
+    const todos = await em.find(Todo, {});
     console.log(todos);
 
     return {
