@@ -33,7 +33,10 @@ up-amplify:
 	cd amplify && pnpm run dev
 
 push:
-	cd amplify && amplify push -y
+	cd amplify && \
+		cd backend/function/echofunction/lib && pnpm install && pnpm tsc -p ../tsconfig.json && cp package.json pnpm-lock.yaml ../src && \
+		cd ../src && pnpm install && \
+		cd ../../../../ && amplify push -y
 
 up-services:
 	devbox services start postgresql-source

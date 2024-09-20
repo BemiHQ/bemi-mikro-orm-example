@@ -1,11 +1,12 @@
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { MikroORM } from "@mikro-orm/postgresql";
 import config from "./mikro-orm.config";
 import { Todo } from "./todo.entity";
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
-exports.handler = async (event, context) => {
+export const handler = async (
+  event: APIGatewayProxyEvent,
+  context: any,
+): Promise<APIGatewayProxyResult> => {
     console.log(`EVENT: ${JSON.stringify(event)}`);
     console.log(`CONTEXT: ${JSON.stringify(context)}`);
 
